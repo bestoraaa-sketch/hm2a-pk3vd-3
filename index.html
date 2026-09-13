@@ -1,1 +1,87 @@
 
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Secret Mission: Birthday Code 🔐</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background: #0f172a;
+      color: #f8fafc;
+      font-family: 'Courier New', Courier, monospace;
+      text-align: center;
+      padding: 20px;
+    }
+    .card {
+      background: #1e293b;
+      padding: 40px 30px;
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+      border: 1px solid #334155;
+      max-width: 400px;
+      width: 100%;
+    }
+    .code-box {
+      background: #090d16;
+      color: #38bdf8;
+      padding: 15px;
+      border-radius: 8px;
+      font-size: 20px;
+      letter-spacing: 2px;
+      margin: 20px 0;
+      border: 1px dashed #38bdf8;
+    }
+    .btn {
+      margin-top: 20px;
+      padding: 12px 24px;
+      background: #ec4899;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .btn:hover { background: #db2777; }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <h2>🔒 Decrypting URL...</h2>
+    <p style="margin-top: 10px; color: #94a3b8; font-size: 14px;">Secret Code Detected:</p>
+    
+    <!-- 這裡會顯示你的秘密網址代碼 -->
+    <div class="code-box" id="codeText">hi-aa-pn-hd</div>
+
+    <p id="hintText" style="font-size: 14px; color: #cbd5e1; line-height: 1.5;">
+      Did you know? In Hong Kong Quick Input Method, these keys spell out:
+    </p>
+
+    <h1 id="decodedText" style="color: #f43f5e; margin: 15px 0; font-size: 32px; display: none;">
+      🎂 生日快樂 🎂
+    </h1>
+
+    <button class="btn" onclick="decodeCode()">Unlock Secret Book ✨</button>
+  </div>
+
+  <script>
+    function decodeCode() {
+      document.getElementById('decodedText').style.display = 'block';
+      document.getElementById('codeText').style.color = '#4ade80';
+      document.getElementById('codeText').innerText = 'HAPPY BIRTHDAY!';
+      alert('🔓 Secret Code Unlocked! Welcome to your Birthday Storybook!');
+      // 未來在這裡跳轉到故事第一頁
+    }
+  </script>
+
+</body>
+</html>
