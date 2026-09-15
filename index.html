@@ -121,10 +121,13 @@
    
     
     <!-- 代碼提示標籤 -->
-    <div class="code-tag">hi-aa-pn-hd</div>
+ <!-- 提示文字 -->
+    <p style="color: #64748b; font-size: 14px; margin-bottom: 15px;">
+      提示是: try to input something!🌟
+    </p>
 
     <div class="input-group">
-      <input type="text" id="passwordInput" placeholder="輸入密碼解鎖日記..." autocomplete="off">
+      <input type="text" id="passwordInput" placeholder="..." autocomplete="off">
     </div>
     
     <button class="btn" onclick="checkPassword()">打開日記本 ✨</button>
@@ -133,7 +136,7 @@
 
   <script>
     // 💡 設定正確密碼（使用者輸入時會自動轉小寫比對）
-    const CORRECT_PASSWORD = "hiaapnhd"; 
+   const CORRECT_PASSWORD = "7";
 
     function checkPassword() {
       const userVal = document.getElementById('passwordInput').value.trim().toLowerCase();
