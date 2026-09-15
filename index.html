@@ -3,81 +3,74 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>🥳🎊🎂🎈🎉</title>
+  <title>Our Memory Journal 📖</title>
+  
+  <!-- Google Fonts: Caveat (Cute handwriting font) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&display=swap" rel="stylesheet">
+
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
-font-family: 'Caveat', cursive, -apple-system, sans-serif;
     
     body {
       height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
-      background-color: #f8fafc; /* 簡約柔和的淺白背景 */
-      background-image: radial-gradient(#e2e8f0 1px, transparent 1px); /* 輕微的手帳網格質感 */
+      background-color: #f8fafc;
+      background-image: radial-gradient(#e2e8f0 1px, transparent 1px);
       background-size: 20px 20px;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      font-family: 'Caveat', cursive, -apple-system, sans-serif;
       padding: 20px;
     }
 
     /* 日記本外觀 */
     .journal-cover {
       background: #ffffff;
-      padding: 40px 30px;
+      padding: 35px 40px;
       border-radius: 12px;
       box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08), 0 2px 6px rgba(0, 0, 0, 0.04);
       border: 1px solid #e2e8f0;
-      border-left: 12px solid #cbd5e1; /* 模擬日記本書脊綁帶 */
-      max-width: 450px;
+      border-left: 14px solid #cbd5e1;
+      max-width: 480px; /* 調整寬度，維持質感比例 */
       width: 100%;
       text-align: center;
       position: relative;
     }
 
     .journal-title {
-      font-size: 22px;
+      font-size: 32px;
       color: #334155;
-      margin-bottom: 8px;
-      font-weight: 600;
+      margin-bottom: 6px;
+      font-weight: 700;
       letter-spacing: 0.5px;
     }
 
     .subtitle {
       color: #64748b;
-      font-size: 13px;
-      margin-bottom: 25px;
-      font-style: italic;
-    }
-
-    /* 書籤/代碼標籤紙效果 */
-    .code-tag {
-      display: inline-block;
-      background: #f1f5f9;
-      color: #475569;
-      padding: 8px 16px;
-      border-radius: 6px;
-      font-family: 'Courier New', Courier, monospace;
-      font-size: 16px;
-      letter-spacing: 1px;
+      font-size: 20px;
       margin-bottom: 20px;
-      border: 1px dashed #cbd5e1;
     }
 
-    /* 日記本鎖匙輸入框 */
+    .hint-text {
+      color: #64748b;
+      font-size: 20px;
+      margin-bottom: 15px;
+    }
+
     .input-group {
       margin-bottom: 15px;
     }
 
     input {
       width: 100%;
-      padding: 12px 15px;
+      padding: 10px 15px;
       border-radius: 8px;
       border: 1.5px solid #cbd5e1;
       background: #fafafa;
       color: #1e293b;
-      font-size: 15px;
+      font-size: 22px;
+      font-family: 'Caveat', cursive, sans-serif;
       text-align: center;
       outline: none;
       transition: all 0.2s ease;
@@ -89,16 +82,16 @@ font-family: 'Caveat', cursive, -apple-system, sans-serif;
       box-shadow: 0 0 0 3px rgba(148, 163, 184, 0.15);
     }
 
-    /* 開啟日記本按鈕 */
     .btn {
       width: 100%;
-      padding: 12px;
+      padding: 10px;
       background: #475569;
       color: white;
       border: none;
       border-radius: 8px;
-      font-size: 15px;
-      font-weight: 500;
+      font-size: 22px;
+      font-family: 'Caveat', cursive, sans-serif;
+      font-weight: 700;
       cursor: pointer;
       transition: background 0.2s ease;
     }
@@ -109,7 +102,7 @@ font-family: 'Caveat', cursive, -apple-system, sans-serif;
 
     #errorMsg {
       color: #e11d48;
-      font-size: 13px;
+      font-size: 18px;
       margin-top: 12px;
       display: none;
     }
@@ -117,20 +110,18 @@ font-family: 'Caveat', cursive, -apple-system, sans-serif;
 </head>
 <body>
 
-  <!-- 簡約白色日記本封面 -->
   <div class="journal-cover">
-    <!-- ✏️ 替換成這行： -->
-<img src="2.jpeg" alt="Journal Cover" style="max-width: 100%; height: auto; margin-bottom: 15px;">
-   
+    <!-- 上傳在 GitHub 的封面圖片 (原圖尺寸顯示，不限大小) -->
+    <img src="cover.png" alt="Journal Cover" style="max-width: 100%; height: auto; margin-bottom: 15px;">
     
-    <!-- 代碼提示標籤 -->
- <!-- 提示文字 -->
-    <p style="color: #64748b; font-size: 14px; margin-bottom: 15px;">
-      try to input something!🌟
-    </p>
+    <h1 class="journal-title">Our Memory Journal</h1>
+    <p class="subtitle">A little birthday story for you</p>
+    
+    <!-- 提示與輸入框 -->
+    <p class="hint-text">提示是: try to input something!🌟</p>
 
     <div class="input-group">
-      <input type="text" id="passwordInput" placeholder="..." autocomplete="off">
+      <input type="text" id="passwordInput" placeholder="請輸入密碼..." autocomplete="off">
     </div>
     
     <button class="btn" onclick="checkPassword()">打開日記本 ✨</button>
@@ -138,16 +129,16 @@ font-family: 'Caveat', cursive, -apple-system, sans-serif;
   </div>
 
   <script>
-    // 💡 設定正確密碼（使用者輸入時會自動轉小寫比對）
-   const CORRECT_PASSWORD = "7";
+    // 正確密碼設為 7
+    const CORRECT_PASSWORD = "7"; 
 
     function checkPassword() {
-      const userVal = document.getElementById('passwordInput').value.trim().toLowerCase();
+      const userVal = document.getElementById('passwordInput').value.trim();
       const error = document.getElementById('errorMsg');
 
-      if (userVal === CORRECT_PASSWORD || userVal === "hi-aa-pn-hd") {
+      if (userVal === CORRECT_PASSWORD) {
         alert('🔓 密碼正確！正在翻開日記本...');
-        // 下一步：進入故事電子書內頁
+        // 未來在這裡加入進入故事內頁的邏輯
       } else {
         error.style.display = 'block';
       }
