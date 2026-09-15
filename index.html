@@ -1,85 +1,150 @@
-
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Secret Mission: Birthday Code 🔐</title>
+  <title>Our Memory Journal 📖</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
+    
     body {
       height: 100vh;
       display: flex;
-      flex-direction: column;
       justify-content: center;
       align-items: center;
-      background: #0f172a;
-      color: #f8fafc;
-      font-family: 'Courier New', Courier, monospace;
-      text-align: center;
+      background-color: #f8fafc; /* 簡約柔和的淺白背景 */
+      background-image: radial-gradient(#e2e8f0 1px, transparent 1px); /* 輕微的手帳網格質感 */
+      background-size: 20px 20px;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
       padding: 20px;
     }
-    .card {
-      background: #1e293b;
+
+    /* 日記本外觀 */
+    .journal-cover {
+      background: #ffffff;
       padding: 40px 30px;
-      border-radius: 16px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-      border: 1px solid #334155;
-      max-width: 400px;
+      border-radius: 12px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08), 0 2px 6px rgba(0, 0, 0, 0.04);
+      border: 1px solid #e2e8f0;
+      border-left: 12px solid #cbd5e1; /* 模擬日記本書脊綁帶 */
+      max-width: 380px;
       width: 100%;
+      text-align: center;
+      position: relative;
     }
-    .code-box {
-      background: #090d16;
-      color: #38bdf8;
-      padding: 15px;
+
+    .journal-title {
+      font-size: 22px;
+      color: #334155;
+      margin-bottom: 8px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+
+    .subtitle {
+      color: #64748b;
+      font-size: 13px;
+      margin-bottom: 25px;
+      font-style: italic;
+    }
+
+    /* 書籤/代碼標籤紙效果 */
+    .code-tag {
+      display: inline-block;
+      background: #f1f5f9;
+      color: #475569;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 16px;
+      letter-spacing: 1px;
+      margin-bottom: 20px;
+      border: 1px dashed #cbd5e1;
+    }
+
+    /* 日記本鎖匙輸入框 */
+    .input-group {
+      margin-bottom: 15px;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px 15px;
       border-radius: 8px;
-      font-size: 20px;
-      letter-spacing: 2px;
-      margin: 20px 0;
-      border: 1px dashed #38bdf8;
+      border: 1.5px solid #cbd5e1;
+      background: #fafafa;
+      color: #1e293b;
+      font-size: 15px;
+      text-align: center;
+      outline: none;
+      transition: all 0.2s ease;
     }
+
+    input:focus {
+      border-color: #94a3b8;
+      background: #ffffff;
+      box-shadow: 0 0 0 3px rgba(148, 163, 184, 0.15);
+    }
+
+    /* 開啟日記本按鈕 */
     .btn {
-      margin-top: 20px;
-      padding: 12px 24px;
-      background: #ec4899;
+      width: 100%;
+      padding: 12px;
+      background: #475569;
       color: white;
       border: none;
       border-radius: 8px;
-      font-size: 16px;
-      font-weight: bold;
+      font-size: 15px;
+      font-weight: 500;
       cursor: pointer;
-      transition: 0.3s;
+      transition: background 0.2s ease;
     }
-    .btn:hover { background: #db2777; }
+
+    .btn:hover {
+      background: #334155;
+    }
+
+    #errorMsg {
+      color: #e11d48;
+      font-size: 13px;
+      margin-top: 12px;
+      display: none;
+    }
   </style>
 </head>
 <body>
 
-  <div class="card">
-    <h2>🔒 Decrypting URL...</h2>
-    <p style="margin-top: 10px; color: #94a3b8; font-size: 14px;">Secret Code Detected:</p>
+  <!-- 簡約白色日記本封面 -->
+  <div class="journal-cover">
+    <div style="font-size: 36px; margin-bottom: 10px;">📔</div>
+    <h1 class="journal-title">Our Memory Journal</h1>
+    <p class="subtitle">A little birthday story for you</p>
     
-    <!-- 這裡會顯示你的秘密網址代碼 -->
-    <div class="code-box" id="codeText">hi-aa-pn-hd</div>
+    <!-- 代碼提示標籤 -->
+    <div class="code-tag">hi-aa-pn-hd</div>
 
-    <p id="hintText" style="font-size: 14px; color: #cbd5e1; line-height: 1.5;">
-      Did you know? In Hong Kong Quick Input Method, these keys spell out:
-    </p>
-
-    <h1 id="decodedText" style="color: #f43f5e; margin: 15px 0; font-size: 32px; display: none;">
-      🎂 生日快樂 🎂
-    </h1>
-
-    <button class="btn" onclick="decodeCode()">Unlock Secret Book ✨</button>
+    <div class="input-group">
+      <input type="text" id="passwordInput" placeholder="輸入密碼解鎖日記..." autocomplete="off">
+    </div>
+    
+    <button class="btn" onclick="checkPassword()">打開日記本 ✨</button>
+    <p id="errorMsg">❌ 密碼不正確，再試一次？</p>
   </div>
 
   <script>
-    function decodeCode() {
-      document.getElementById('decodedText').style.display = 'block';
-      document.getElementById('codeText').style.color = '#4ade80';
-      document.getElementById('codeText').innerText = 'HAPPY BIRTHDAY!';
-      alert('🔓 Secret Code Unlocked! Welcome to your Birthday Storybook!');
-      // 未來在這裡跳轉到故事第一頁
+    // 💡 設定正確密碼（使用者輸入時會自動轉小寫比對）
+    const CORRECT_PASSWORD = "hiaapnhd"; 
+
+    function checkPassword() {
+      const userVal = document.getElementById('passwordInput').value.trim().toLowerCase();
+      const error = document.getElementById('errorMsg');
+
+      if (userVal === CORRECT_PASSWORD || userVal === "hi-aa-pn-hd") {
+        alert('🔓 密碼正確！正在翻開日記本...');
+        // 下一步：進入故事電子書內頁
+      } else {
+        error.style.display = 'block';
+      }
     }
   </script>
 
