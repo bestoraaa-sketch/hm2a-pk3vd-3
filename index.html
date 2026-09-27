@@ -5,9 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>.... .- .--. .. / -... -.. .- -.-- / .--. .-. .. -. -.-. .</title>
   
-
- <!-- ✏️ 替換成 Playpen Sans： -->
-<link href="https://fonts.googleapis.com/css2?family=Single+Day&display=swap" rel="stylesheet">
+  <!-- Single Day 字體引入 -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Single+Day&display=swap" rel="stylesheet">
   
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -17,22 +17,23 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      background-color: #f8fafc;
-      background-image: radial-gradient(#e2e8f0 1px, transparent 1px);
+      /* 深色背景 + 點陣風格 */
+      background-color: #0f172a;
+      background-image: radial-gradient(#334155 1px, transparent 1px);
       background-size: 20px 20px;
-  font-family: 'Single Day', cursive, -apple-system, sans-serif;
+      font-family: 'Single Day', cursive, -apple-system, sans-serif;
       padding: 20px;
     }
 
-    /* 日記本外觀 */
+    /* 日記本外觀 (深色模式) */
     .journal-cover {
-      background: #ffffff;
+      background: #1e293b;
       padding: 35px 40px;
       border-radius: 12px;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08), 0 2px 6px rgba(0, 0, 0, 0.04);
-      border: 1px solid #e2e8f0;
-      border-left: 14px solid #cbd5e1;
-      max-width: 480px; /* 調整寬度，維持質感比例 */
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5), 0 2px 8px rgba(0, 0, 0, 0.3);
+      border: 1px solid #334155;
+      border-left: 14px solid #475569; /* 深色質感書脊 */
+      max-width: 480px;
       width: 100%;
       text-align: center;
       position: relative;
@@ -40,20 +41,20 @@
 
     .journal-title {
       font-size: 32px;
-      color: #334155;
+      color: #f8fafc;
       margin-bottom: 6px;
-      font-weight: 700;
+      font-weight: normal;
       letter-spacing: 0.5px;
     }
 
     .subtitle {
-      color: #64748b;
+      color: #94a3b8;
       font-size: 20px;
       margin-bottom: 20px;
     }
 
     .hint-text {
-      color: #64748b;
+      color: #cbd5e1;
       font-size: 20px;
       margin-bottom: 15px;
     }
@@ -66,42 +67,50 @@
       width: 100%;
       padding: 10px 15px;
       border-radius: 8px;
-      border: 1.5px solid #cbd5e1;
-      background: #fafafa;
-      color: #1e293b;
+      border: 1.5px solid #475569;
+      background: #0f172a;
+      color: #f8fafc;
       font-size: 22px;
-      font-family: 'Caveat', cursive, sans-serif;
+      font-family: 'Single Day', cursive, sans-serif;
       text-align: center;
       outline: none;
       transition: all 0.2s ease;
     }
 
+    input::placeholder {
+      color: #64748b;
+    }
+
     input:focus {
-      border-color: #94a3b8;
-      background: #ffffff;
-      box-shadow: 0 0 0 3px rgba(148, 163, 184, 0.15);
+      border-color: #38bdf8; /* 淡藍色 Glow 聚焦效果 */
+      background: #0f172a;
+      box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.2);
     }
 
     .btn {
       width: 100%;
       padding: 10px;
-      background: #475569;
-      color: white;
+      background: #38bdf8; /* 亮眼淡藍色按鈕 */
+      color: #0f172a;
       border: none;
       border-radius: 8px;
       font-size: 22px;
-      font-family: 'Caveat', cursive, sans-serif;
-      font-weight: 700;
+      font-family: 'Single Day', cursive, sans-serif;
+      font-weight: bold;
       cursor: pointer;
-      transition: background 0.2s ease;
+      transition: background 0.2s ease, transform 0.1s ease;
     }
 
     .btn:hover {
-      background: #334155;
+      background: #7dd3fc;
+    }
+
+    .btn:active {
+      transform: scale(0.98);
     }
 
     #errorMsg {
-      color: #e11d48;
+      color: #fb7185;
       font-size: 18px;
       margin-top: 12px;
       display: none;
@@ -111,10 +120,9 @@
 <body>
 
   <div class="journal-cover">
-    <!-- 上傳在 GitHub 的封面圖片 (原圖尺寸顯示，不限大小) -->
-    <img src="2.jpeg" alt="Journal Cover" style="max-width: 100%; height: auto; margin-bottom: 15px;">
+    <!-- 封面圖片 (2.jpeg) -->
+    <img src="2.jpeg" alt="Journal Cover" style="max-width: 100%; height: auto; margin-bottom: 15px; border-radius: 6px;">
     
- 
     <div class="input-group">
       <input type="text" id="passwordInput" placeholder="try to input something.." autocomplete="off">
     </div>
